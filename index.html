@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Курсовая работа</title>
+     <script src="node_modules\mathjs\dist\math.js" type="text/javascript"></script>
+     <script src="js\matr.js"></script>
+     <script>
+       window.onload = init
+       function init(){
+        var canvas = document.getElementById('field');
+        var ctx = canvas.getContext('2d');
+        ctx.rect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'gray';
+        ctx.fill();
+       }
+       function go(){
+        let f = new Flame(field.width, field.height);
+        var method = document.querySelector('input[name="inMethod"]:checked').value;
+        f.Render('field', inN.value, inEq.value, inIt.value, method, true, 0.0, inGamma.value);
+       }
+     </script>
+     <style>
+       .grid-container {
+           display: grid;
+           grid-template-columns: 1000px 700px;
+         }
+
+       .grid-item {
+           box-sizing: border-box;
+         }
+        </style>
+  </head>
+  <body class="grid-container">
+    <canvas class="grid-item" id="field" width="920" height="920"></canvas>
+    <div class="grid-item">
+      <h2>Параметры</h2>
+      <p><input id="inN" type="range" min="0" max="300" step="10" value="100">Количество объектов</p>
+      <p><input id="inEq" type="range" min="0" max="300" step="10" value="100">Количество аффинных преобразований</p>
+      <p><input id="inIt" type="range" min="0" max="200000" step="1000" value="100000">Количество итераций</p>
+      <!--p><input id="inMax" type="range" min="0" max="1" step="0.1" value="0.0">Логарифмическая коррекция</p-->
+      <p><input id="inGamma" type="range" min="0" max="5" step="0.2" value="0.8">Гамма коррекция</p>
+      <h2>Используемый метод:</h2>
+      <p><input type="radio" value="linear" checked name="inMethod"/>Линейный</p>
+      <p><input type="radio" value="sin" checked name="inMethod"/>Синус</p>
+      <p><input type="radio" value="polar" checked name="inMethod"/>Полярный</p>
+      <p><input type="radio" value="sphere" name="inMethod"/>Сфера</p>
+      <p><input type="radio" value="hand" name="inMethod"/>Хендкерчиф</p>
+      <p><input type="radio" value="julia" name="inMethod"/>Julia</p>
+      <p><input type="radio" value="disk" name="inMethod"/>Диск</p>
+      <p><button type="submit" onclick="go()">Применить</button></p>
+    </div>
+  </body>
+</html>
