@@ -19,23 +19,24 @@
        }
      </script>
      <style>
-       .grid-container {
+       body {
            display: flex;
          }
 
-       .grid-item {
-           box-sizing: border-box;
+       #field {
+           margin: 20px;
+           width: 920px;
+           height: 920px;
          }
-        </style>
+      </style>
   </head>
   <body class="grid-container">
-    <canvas class="grid-item" id="field" width="920" height="920"></canvas>
+    <canvas id="field" width="920" height="920"></canvas>
     <div class="grid-item">
       <h2>Параметры</h2>
       <p><input id="inN" type="range" min="0" max="300" step="10" value="100">Количество объектов</p>
       <p><input id="inEq" type="range" min="0" max="300" step="10" value="100">Количество аффинных преобразований</p>
       <p><input id="inIt" type="range" min="0" max="200000" step="1000" value="100000">Количество итераций</p>
-      <!--p><input id="inMax" type="range" min="0" max="1" step="0.1" value="0.0">Логарифмическая коррекция</p-->
       <p><input id="inGamma" type="range" min="0" max="5" step="0.2" value="0.8">Гамма коррекция</p>
       <h2>Используемый метод:</h2>
       <p><input type="radio" value="linear" checked name="inMethod"/>Линейный</p>
